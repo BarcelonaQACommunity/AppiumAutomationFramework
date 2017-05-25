@@ -7,8 +7,8 @@
     <ProjectGuid>{18B54D9E-E77A-4B88-B26F-0EAFB51745CB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AppiumAutomationFramework</RootNamespace>
-    <AssemblyName>AppiumAutomationFramework</AssemblyName>
+    <RootNamespace>PageObject.Factory.Contracts</RootNamespace>
+    <AssemblyName>PageObject.Factory.Contracts</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
