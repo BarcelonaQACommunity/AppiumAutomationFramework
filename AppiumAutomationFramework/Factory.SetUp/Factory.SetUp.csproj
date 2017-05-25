@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{18B54D9E-E77A-4B88-B26F-0EAFB51745CB}</ProjectGuid>
+    <ProjectGuid>{D361C7DC-CF40-42A5-8F32-8DD78C477336}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PageObject.Factory.Contracts</RootNamespace>
-    <AssemblyName>PageObject.Factory.Contracts</AssemblyName>
+    <RootNamespace>Factory.SetUp</RootNamespace>
+    <AssemblyName>Factory.SetUp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,8 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Base.Contracts\" />
-    <Folder Include="Pages.Contracts\" />
+    <Folder Include="binaries\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
