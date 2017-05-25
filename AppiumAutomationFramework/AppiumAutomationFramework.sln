@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageObject.Factory.Contracts", "AppiumAutomationFramework\PageObject.Factory.Contracts.csproj", "{18B54D9E-E77A-4B88-B26F-0EAFB51745CB}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Page Object", "1 - Page Object", "{D9CF6DAB-82AF-4F6E-BF5C-F3664BFDDDD7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.1 - Contracts", "1.1 - Contracts", "{89A812EF-73C9-4CB6-B708-4B308F7DF52E}"
@@ -31,10 +29,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{18B54D9E-E77A-4B88-B26F-0EAFB51745CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18B54D9E-E77A-4B88-B26F-0EAFB51745CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18B54D9E-E77A-4B88-B26F-0EAFB51745CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18B54D9E-E77A-4B88-B26F-0EAFB51745CB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F4FA035F-D117-4DBF-B950-0127912F2C47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F4FA035F-D117-4DBF-B950-0127912F2C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4FA035F-D117-4DBF-B950-0127912F2C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,7 +50,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{18B54D9E-E77A-4B88-B26F-0EAFB51745CB} = {89A812EF-73C9-4CB6-B708-4B308F7DF52E}
 		{89A812EF-73C9-4CB6-B708-4B308F7DF52E} = {D9CF6DAB-82AF-4F6E-BF5C-F3664BFDDDD7}
 		{C256BAEC-1606-4165-9555-1B4A50C491C6} = {D9CF6DAB-82AF-4F6E-BF5C-F3664BFDDDD7}
 		{F7CF2980-BD6F-4A1A-890C-20639D86CE7D} = {D9CF6DAB-82AF-4F6E-BF5C-F3664BFDDDD7}
