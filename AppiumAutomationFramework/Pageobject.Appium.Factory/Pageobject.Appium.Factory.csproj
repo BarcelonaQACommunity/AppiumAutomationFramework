@@ -61,14 +61,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base.Appium\AndroidPageObjectBase.cs" />
+    <Compile Include="Pages.Appium\AndroidMainViewPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Base.Appium\" />
-    <Folder Include="Pages.Appium\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Factory.SetUp\Factory.SetUp.csproj">
+      <Project>{d361c7dc-cf40-42a5-8f32-8dd78c477336}</Project>
+      <Name>Factory.SetUp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pageobject.Factory.Contracts\Pageobject.Factory.Contracts.csproj">
+      <Project>{73DC9447-C73A-4CD9-AA50-762CF2B12B85}</Project>
+      <Name>Pageobject.Factory.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
