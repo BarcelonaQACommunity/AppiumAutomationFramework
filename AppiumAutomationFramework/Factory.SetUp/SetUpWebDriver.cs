@@ -53,6 +53,35 @@ namespace Factory.SetUp
         }
 
         /// <summary>
+        /// See Wiki to set up the desired capabilities.
+        /// <seealso cref="https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/caps.md"/>
+        /// </summary>
+        public static AppiumDriver<AndroidElement> SetUpAppiumLocalDriver()
+        {
+            if (AppiumDriver != null)
+            {
+                return AppiumDriver;
+            }
+
+            var appFullPath = Directory.GetParent(Directory.GetCurrentDirectory()) + AndroidApplicationPath;
+
+            // Set up capabilities.
+            // See Appium Capabilities wiki.
+            var capabilities = new DesiredCapabilities();
+            capabilities.SetCapability("platformName", "Android");
+            capabilities.SetCapability("platformVersion", "6.0.1");
+            capabilities.SetCapability("fullReset", "True");
+            capabilities.SetCapability("app", appFullPath);
+
+            // To see the device name with the cmd console check adb devices -l
+            capabilities.SetCapability("deviceName", "trlte");
+
+            AppiumDriver = new AndroidDriver<AndroidElement>(new Uri("http://127.0.0.1:4723/wd/hub"), capabilities, TimeSpan.FromSeconds(600));
+
+            return AppiumDriver;
+        }
+
+        /// <summary>
         /// Closes the android driver.
         /// </summary>
         public static void CloseAndroidDriver()
