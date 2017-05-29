@@ -26,6 +26,7 @@ namespace CrossLayer.DI.Module
         {
             var buildContainer = new ContainerBuilder();
             buildContainer.RegisterType<AndroidMainViewPage>().As<IMainViewPage>();
+            buildContainer.RegisterType<AndroidAddTaskPage>().As<IAddTaskPage>();
 
             AndroidContainer = buildContainer.Build();
         }

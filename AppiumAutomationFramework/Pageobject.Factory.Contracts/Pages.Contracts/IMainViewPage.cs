@@ -17,11 +17,27 @@ namespace Pageobject.Factory.Contracts.Pages.Contracts
         /// <summary>
         /// Proverb appears when the application does not have tasks.
         /// </summary>
-        string GetProverb();
+        string Proverb { get; }
 
         /// <summary>
         /// Gets the number of tasks from the list.
         /// </summary>
-        int GetTotalTasks();
+        int TotalTasks { get; }
+
+        /// <summary>
+        /// Goes to the add task page.
+        /// </summary>
+        void AddNewTask();
+
+        /// <summary>
+        /// Takes the screenshot.
+        /// </summary>
+        /// <param name="scenarioTitle">The scenario title.</param>
+        void TakeScreenshot(string scenarioTitle);
+
+        /// <summary>
+        /// Closes the android driver.
+        /// </summary>
+        void CloseAndroidDriver();
     }
 }

@@ -18,6 +18,9 @@ namespace UserStories.AcceptanceTest.Steps
         // Main View page.
         private readonly IMainViewPage _mainViewPage;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainViewSteps"/> class.
+        /// </summary>
         public MainViewSteps()
         {
             this._mainViewPage = AppContainer.AndroidContainer.Resolve<IMainViewPage>();
@@ -34,12 +37,21 @@ namespace UserStories.AcceptanceTest.Steps
         }
 
         /// <summary>
+        /// The user goes to the add task view.
+        /// </summary>
+        [Given(@"The user goes to the add task view")]
+        public void TheUserGoesToTheAddTaskView()
+        {
+            this._mainViewPage.AddNewTask();
+        }
+
+        /// <summary>
         /// Check that the list does not have tasks.
         /// </summary>
         [When(@"The application does not have any tasks")]
         public void TheApplicationDoesNotHaveAnyTasks()
         {
-            Assert.AreEqual(0, this._mainViewPage.GetTotalTasks());
+            Assert.AreEqual(0, this._mainViewPage.TotalTasks);
         }
 
         /// <summary>
@@ -48,7 +60,18 @@ namespace UserStories.AcceptanceTest.Steps
         [Then(@"The user sees a proverb")]
         public void TheUserSeesAProverb()
         {
-            Assert.IsFalse(this._mainViewPage.GetProverb().IsNullOrEmpty());
+            Assert.IsFalse(this._mainViewPage.Proverb.IsNullOrEmpty());
+        }
+
+        [AfterScenario]
+        public void AfterScenario()
+        {
+            if (ScenarioContext.Current.TestError != null)
+            {
+                this._mainViewPage.TakeScreenshot(ScenarioContext.Current.ScenarioInfo.Title);
+            }
+
+            this._mainViewPage.CloseAndroidDriver();
         }
     }
 }

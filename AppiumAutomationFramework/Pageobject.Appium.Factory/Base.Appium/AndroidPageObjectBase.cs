@@ -30,10 +30,7 @@ namespace Pageobject.Appium.Factory.Base.Appium
         /// </summary>
         protected void SetUpDefaultConfiguration()
         {
-            if (this.AndroidDriver == null)
-            {
-                this.AndroidDriver = SetUpWebDriver.SetUpAppiumDriver();
-            }
+            this.AndroidDriver = SetUpWebDriver.SetUpAppiumDriver();
 
             // If required, add more default configuration values.
         }

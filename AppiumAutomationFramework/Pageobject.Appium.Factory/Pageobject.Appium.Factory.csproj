@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base.Appium\AndroidPageObjectBase.cs" />
+    <Compile Include="Pages.Appium\AndroidAddTaskPage.cs" />
     <Compile Include="Pages.Appium\AndroidMainViewPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
