@@ -47,7 +47,7 @@ namespace Factory.SetUp
             // To see the device name with the cmd console check adb devices -l
             capabilities.SetCapability("deviceName", "generic_x86");
 
-            AppiumDriver = new AndroidDriver<AndroidElement>(new Uri("http://127.0.0.1:4723/wd/hub"), capabilities);
+            AppiumDriver = new AndroidDriver<AndroidElement>(new Uri("http://127.0.0.1:4723/wd/hub"), capabilities, TimeSpan.FromSeconds(60));
 
             return AppiumDriver;
         }
@@ -77,6 +77,37 @@ namespace Factory.SetUp
             capabilities.SetCapability("deviceName", "trlte");
 
             AppiumDriver = new AndroidDriver<AndroidElement>(new Uri("http://127.0.0.1:4723/wd/hub"), capabilities, TimeSpan.FromSeconds(600));
+
+            return AppiumDriver;
+        }
+
+        /// <summary>
+        /// See Wiki to set up the desired capabilities.
+        /// <seealso cref="https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/caps.md"/>
+        /// </summary>
+        public static AppiumDriver<AndroidElement> SetUpAppiumSauceLabsDriver()
+        {
+            if (AppiumDriver != null)
+            {
+                return AppiumDriver;
+            }
+
+            var appFullPath = Directory.GetParent(Directory.GetCurrentDirectory()) + AndroidApplicationPath;
+
+            // Set up capabilities.
+            // See Appium Capabilities wiki.
+            var capabilities = new DesiredCapabilities();
+            capabilities.SetCapability("platformName", "Android");
+            capabilities.SetCapability("platformVersion", "6.0");
+            capabilities.SetCapability("fullReset", "True");
+            capabilities.SetCapability("app", "https://github.com/ErniQACommunity/AppiumAutomationFramework/tree/master/AppiumAutomationFramework/Factory.SetUp/binaries/mylist.apk");
+            capabilities.SetCapability("username", "erniqa");
+            capabilities.SetCapability("accessKey", "4e3d7e6a-0694-4794-8722-e4fcc6aef6e7");
+
+            // To see the device name https://wiki.saucelabs.com/display/DOCS/Supported+Android+Emulators
+            capabilities.SetCapability("deviceName", "Android Emulator");
+
+            AppiumDriver = new AndroidDriver<AndroidElement>(new Uri("http://ondemand.saucelabs.com:80/wd/hub"), capabilities, TimeSpan.FromSeconds(600));
 
             return AppiumDriver;
         }
