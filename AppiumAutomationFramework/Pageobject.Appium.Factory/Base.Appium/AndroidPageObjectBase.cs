@@ -22,7 +22,7 @@ namespace Pageobject.Appium.Factory.Base.Appium
         /// </summary>
         public AndroidPageObjectBase()
         {
-            this.AndroidDriver = SetUpWebDriver.SetUpAppiumSauceLabsDriver();
+            this.AndroidDriver = SetUpWebDriver.SetUpAppiumDriver();
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pageobject.Appium.Factory.Base.Appium
         /// </summary>
         protected void SetUpDefaultConfiguration()
         {
-            this.AndroidDriver = SetUpWebDriver.SetUpAppiumSauceLabsDriver();
+            this.AndroidDriver = SetUpWebDriver.SetUpAppiumDriver();
 
             // If required, add more default configuration values.
         }

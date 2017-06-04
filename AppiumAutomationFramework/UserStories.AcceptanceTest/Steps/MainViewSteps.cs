@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using CrossLayer.Configuration;
 using CrossLayer.DI.Module;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Pageobject.Factory.Contracts.Pages.Contracts;
@@ -23,6 +24,7 @@ namespace UserStories.AcceptanceTest.Steps
         /// </summary>
         public MainViewSteps()
         {
+            Configuration.CurrentScenario = ScenarioContext.Current.ScenarioInfo.Title;
             this._mainViewPage = AppContainer.AndroidContainer.Resolve<IMainViewPage>();
         }
 
@@ -71,17 +73,30 @@ namespace UserStories.AcceptanceTest.Steps
             Assert.IsFalse(this._mainViewPage.Proverb.IsNullOrEmpty());
         }
 
+        /// <summary>
+        /// The application have task created.
+        /// </summary>
+        /// <param name="total">The total.</param>
         [Then(@"The application has '(.*)' task created")]
         public void TheApplicationHaveTaskCreated(int total)
         {
             Assert.AreEqual(total, this._mainViewPage.TotalTasks);
         }
 
+        /// <summary>
+        /// Afters the scenario.
+        /// </summary>
         [AfterScenario]
         public void AfterScenario()
         {
+            // Set the result in the saucelabs dashboard.
+            Configuration.IsPass = true;
+
             if (ScenarioContext.Current.TestError != null)
             {
+                Configuration.IsPass = false;
+
+                // Take a screenshot if the test fails.
                 this._mainViewPage.TakeScreenshot(ScenarioContext.Current.ScenarioInfo.Title);
             }
 

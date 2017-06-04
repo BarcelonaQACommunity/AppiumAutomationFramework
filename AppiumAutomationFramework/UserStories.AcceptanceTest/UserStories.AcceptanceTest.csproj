@@ -88,6 +88,10 @@
     <Compile Include="Steps\MainViewSteps.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CrossLayer.Configuration\CrossLayer.Configuration.csproj">
+      <Project>{4a116779-794a-4a29-bd15-47036788f81a}</Project>
+      <Name>CrossLayer.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CrossLayer.DI.Module\CrossLayer.DI.Module.csproj">
       <Project>{dc4f1b8f-20d9-49d4-a2ec-5b4ae5447243}</Project>
       <Name>CrossLayer.DI.Module</Name>

@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using CrossLayer.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
@@ -25,7 +26,11 @@ namespace Factory.SetUp
 
         /// <summary>
         /// See Wiki to set up the desired capabilities.
-        /// <seealso cref="https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/caps.md"/>
+        /// <seealso cref="https://wiki.saucelabs.com/display/DOCS/Desired+Capabilities+Required+for+Selenium+and+Appium+Tests"/>
+        /// See Wiki to use the Platform Configuration tool.
+        /// <seealso cref="https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/"/>
+        /// See Wiki to see the supported android emulator devices.
+        /// <seealso cref="https://wiki.saucelabs.com/display/DOCS/Supported+Android+Emulators"/>
         /// </summary>
         public static AppiumDriver<AndroidElement> SetUpAppiumDriver()
         {
@@ -34,6 +39,9 @@ namespace Factory.SetUp
                 return AppiumDriver;
             }
 
+            // Parameter to set saucelabs dashboard configuration in order to add the current scenario and if fails or not the test
+            Configuration.IsSaucelabsConfiguration = false;
+
             var appFullPath = Directory.GetParent(Directory.GetCurrentDirectory()) + AndroidApplicationPath;
 
             // Set up capabilities.
@@ -41,7 +49,7 @@ namespace Factory.SetUp
             var capabilities = new DesiredCapabilities();
             capabilities.SetCapability("platformName", "Android");
             capabilities.SetCapability("platformVersion", "7.0");
-            capabilities.SetCapability("fullReset", "True");
+            capabilities.SetCapability("fullReset", true);
             capabilities.SetCapability("app", appFullPath);
 
             // To see the device name with the cmd console check adb devices -l
@@ -54,7 +62,7 @@ namespace Factory.SetUp
 
         /// <summary>
         /// See Wiki to set up the desired capabilities.
-        /// <seealso cref="https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/caps.md"/>
+        /// <seealso cref="https://wiki.saucelabs.com/display/DOCS/Desired+Capabilities+Required+for+Selenium+and+Appium+Tests"/>
         /// </summary>
         public static AppiumDriver<AndroidElement> SetUpAppiumLocalDriver()
         {
@@ -62,6 +70,9 @@ namespace Factory.SetUp
             {
                 return AppiumDriver;
             }
+
+            // Parameter to set saucelabs dashboard configuration in order to add the current scenario and if fails or not the test
+            Configuration.IsSaucelabsConfiguration = false;
 
             var appFullPath = Directory.GetParent(Directory.GetCurrentDirectory()) + AndroidApplicationPath;
 
@@ -83,7 +94,12 @@ namespace Factory.SetUp
 
         /// <summary>
         /// See Wiki to set up the desired capabilities.
-        /// <seealso cref="https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/caps.md"/>
+        /// <seealso cref="https://wiki.saucelabs.com/display/DOCS/Desired+Capabilities+Required+for+Selenium+and+Appium+Tests"/>
+        /// Upload app: curl -u erniqa:4e3d7e6a-0694-4794-8722-e4fcc6aef6e7 -X POST -H "Content-Type: application/octet-stream" https://saucelabs.com/rest/v1/storage/erniqa/mylist.apk?overwrite=true --data-binary @/mylist.apk
+        /// See Wiki to use the Platform Configuration tool.
+        /// <seealso cref="https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/"/>
+        /// See Wiki to see the supported android emulator devices.
+        /// <seealso cref="https://wiki.saucelabs.com/display/DOCS/Supported+Android+Emulators"/>
         /// </summary>
         public static AppiumDriver<AndroidElement> SetUpAppiumSauceLabsDriver()
         {
@@ -92,23 +108,17 @@ namespace Factory.SetUp
                 return AppiumDriver;
             }
 
-            var appFullPath = Directory.GetParent(Directory.GetCurrentDirectory()) + AndroidApplicationPath;
+            // Parameter to set saucelabs dashboard configuration in order to add the current scenario and if fails or not the test
+            Configuration.IsSaucelabsConfiguration = true;
 
-            // Set up capabilities.
-            // See Appium Capabilities wiki.
             var capabilities = new DesiredCapabilities();
             capabilities.SetCapability("platformName", "Android");
             capabilities.SetCapability("platformVersion", "7.0");
-            capabilities.SetCapability("app", "https://github.com/ErniQACommunity/AppiumAutomationFramework/tree/master/AppiumAutomationFramework/Factory.SetUp/binaries/mylist.apk");
+            capabilities.SetCapability("deviceName", "Android GoogleAPI Emulator");
+            capabilities.SetCapability("app", "sauce-storage:mylist.apk");
             capabilities.SetCapability("username", "erniqa");
             capabilities.SetCapability("accessKey", "4e3d7e6a-0694-4794-8722-e4fcc6aef6e7");
-            capabilities.SetCapability("noReset", "true");
-            capabilities.SetCapability("app-package", "douzifly.list"); //Replace with your app's package
-            capabilities.SetCapability("app-activity", "douzifly.list.ui.home.MainActivity"); //Replace with app's Activity
-
-
-            // To see the device name https://wiki.saucelabs.com/display/DOCS/Supported+Android+Emulators
-            capabilities.SetCapability("deviceName", "Android GoogleAPI Emulator");
+            capabilities.SetCapability("name", Configuration.CurrentScenario);
 
             AppiumDriver = new AndroidDriver<AndroidElement>(new Uri("http://ondemand.saucelabs.com:80/wd/hub"), capabilities, TimeSpan.FromSeconds(600));
 
@@ -120,6 +130,11 @@ namespace Factory.SetUp
         /// </summary>
         public static void CloseAndroidDriver()
         {
+            if (Configuration.IsSaucelabsConfiguration)
+            {
+                ((IJavaScriptExecutor)AppiumDriver).ExecuteScript("sauce:job-result=" + (Configuration.IsPass ? "passed" : "failed"));
+            }
+
             AppiumDriver?.Dispose();
             AppiumDriver = null;
         }
