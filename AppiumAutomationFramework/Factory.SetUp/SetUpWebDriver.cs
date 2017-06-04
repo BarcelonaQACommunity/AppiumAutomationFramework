@@ -98,14 +98,17 @@ namespace Factory.SetUp
             // See Appium Capabilities wiki.
             var capabilities = new DesiredCapabilities();
             capabilities.SetCapability("platformName", "Android");
-            capabilities.SetCapability("platformVersion", "6.0");
-            capabilities.SetCapability("fullReset", "True");
+            capabilities.SetCapability("platformVersion", "7.0");
             capabilities.SetCapability("app", "https://github.com/ErniQACommunity/AppiumAutomationFramework/tree/master/AppiumAutomationFramework/Factory.SetUp/binaries/mylist.apk");
             capabilities.SetCapability("username", "erniqa");
             capabilities.SetCapability("accessKey", "4e3d7e6a-0694-4794-8722-e4fcc6aef6e7");
+            capabilities.SetCapability("noReset", "true");
+            capabilities.SetCapability("app-package", "douzifly.list"); //Replace with your app's package
+            capabilities.SetCapability("app-activity", "douzifly.list.ui.home.MainActivity"); //Replace with app's Activity
+
 
             // To see the device name https://wiki.saucelabs.com/display/DOCS/Supported+Android+Emulators
-            capabilities.SetCapability("deviceName", "Android Emulator");
+            capabilities.SetCapability("deviceName", "Android GoogleAPI Emulator");
 
             AppiumDriver = new AndroidDriver<AndroidElement>(new Uri("http://ondemand.saucelabs.com:80/wd/hub"), capabilities, TimeSpan.FromSeconds(600));
 
