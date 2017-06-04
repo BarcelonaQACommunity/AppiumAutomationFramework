@@ -81,6 +81,16 @@ namespace Pageobject.Appium.Factory.Pages.Appium
         }
 
         /// <summary>
+        /// Selects the task.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        public void SelectTask(int id)
+        {
+            var number = id - 1;
+            this._taskList[number].Click();
+        }
+
+        /// <summary>
         /// Take the screenshot.
         /// </summary>
         /// <param name="scenarioTitle">The scenario title.</param>

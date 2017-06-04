@@ -23,7 +23,11 @@ namespace Pageobject.Factory.Contracts.Pages.Contracts
         /// Sets the color of the task.
         /// </summary>
         /// <param name="color">The color.</param>
-        /// <exception cref="NotFoundException"></exception>
         void SetTaskColor(string color);
+
+        /// <summary>
+        /// Creates the task.
+        /// </summary>
+        void CreateTask();
     }
 }

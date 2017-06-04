@@ -38,6 +38,12 @@ namespace Pageobject.Appium.Factory.Pages.Appium
         [FindsBy(How = How.ClassName, Using = "android.view.View")]
         private IList<IWebElement> _colorPicker;
 
+        /// <summary>
+        /// The create task button.
+        /// </summary>
+        [FindsBy(How = How.Id, Using = "douzifly.list:id/fab_add")]
+        private IWebElement _createTaskButton;
+
         #endregion
 
         /// <summary>
@@ -110,6 +116,14 @@ namespace Pageobject.Appium.Factory.Pages.Appium
                 default:
                     throw new NotFoundException($"{color} not found");
             }
+        }
+
+        /// <summary>
+        /// Creates the task.
+        /// </summary>
+        public void CreateTask()
+        {
+            this._createTaskButton.Click();
         }
     }
 }

@@ -39,6 +39,24 @@ namespace UserStories.AcceptanceTest.Steps
         }
 
         /// <summary>
+        /// The user creates the task.
+        /// </summary>
+        [When(@"The user creates the task")]
+        public void TheUserCreatesTheTask()
+        {
+            this._addTaskViewPage.CreateTask();
+        }
+
+        [Given(@"The user creates a task with the title '(.*)', the content '(.*)', and the color '(.*)'")]
+        [When(@"The user creates a task with the title '(.*)', the content '(.*)', and the color '(.*)'")]
+        public void TheUserCreatesATaskWithTheTitleTheContentAndTheColor(string title, string content, string color)
+        {
+            this.When("The user goes to the add task view");
+            this.When($"The user sets the task with the title '{title}', the content '{content}', and the color '{color}'");
+            this.When("The user creates the task");
+        }
+
+        /// <summary>
         /// The user check that the title and the content from the task are the correct values.
         /// </summary>
         /// <param name="title">The title.</param>

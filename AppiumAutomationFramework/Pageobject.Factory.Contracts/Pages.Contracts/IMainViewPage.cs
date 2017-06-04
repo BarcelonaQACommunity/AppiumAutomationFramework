@@ -30,6 +30,12 @@ namespace Pageobject.Factory.Contracts.Pages.Contracts
         void AddNewTask();
 
         /// <summary>
+        /// Selects the task.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        void SelectTask(int id);
+
+        /// <summary>
         /// Takes the screenshot.
         /// </summary>
         /// <param name="scenarioTitle">The scenario title.</param>

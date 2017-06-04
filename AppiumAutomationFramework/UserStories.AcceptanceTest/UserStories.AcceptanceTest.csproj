@@ -71,6 +71,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AddTaskView.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EditTaskView.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditTaskView.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\MainView.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,6 +84,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\AddTaskViewSteps.cs" />
     <Compile Include="Steps\Base\BaseStep.cs" />
+    <Compile Include="Steps\EditTaskViewSteps.cs" />
     <Compile Include="Steps\MainViewSteps.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +105,10 @@
     <None Include="Features\AddTaskView.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddTaskView.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EditTaskView.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>EditTaskView.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\MainView.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

@@ -40,6 +40,7 @@ namespace UserStories.AcceptanceTest.Steps
         /// The user goes to the add task view.
         /// </summary>
         [Given(@"The user goes to the add task view")]
+        [When(@"The user goes to the add task view")]
         public void TheUserGoesToTheAddTaskView()
         {
             this._mainViewPage.AddNewTask();
@@ -48,10 +49,17 @@ namespace UserStories.AcceptanceTest.Steps
         /// <summary>
         /// Check that the list does not have tasks.
         /// </summary>
+        [Given(@"The application does not have any tasks")]
         [When(@"The application does not have any tasks")]
         public void TheApplicationDoesNotHaveAnyTasks()
         {
             Assert.AreEqual(0, this._mainViewPage.TotalTasks);
+        }
+
+        [When(@"The user goes to the task '(.*)' edit view")]
+        public void TheUserGoesToTheTaskEditView(int id)
+        {
+            this._mainViewPage.SelectTask(id);
         }
 
         /// <summary>
@@ -61,6 +69,12 @@ namespace UserStories.AcceptanceTest.Steps
         public void TheUserSeesAProverb()
         {
             Assert.IsFalse(this._mainViewPage.Proverb.IsNullOrEmpty());
+        }
+
+        [Then(@"The application has '(.*)' task created")]
+        public void TheApplicationHaveTaskCreated(int total)
+        {
+            Assert.AreEqual(total, this._mainViewPage.TotalTasks);
         }
 
         [AfterScenario]
