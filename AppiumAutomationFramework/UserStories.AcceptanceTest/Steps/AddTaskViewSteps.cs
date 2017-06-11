@@ -25,6 +25,12 @@ namespace UserStories.AcceptanceTest.Steps
             this._addTaskViewPage = AppContainer.AndroidContainer.Resolve<IAddTaskPage>();
         }
 
+        /// <summary>
+        /// The user sets the task with the title the content and the color.
+        /// </summary>
+        /// <param name="title">The title.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="color">The color.</param>
         [When(@"The user sets the task with the title '(.*)', the content '(.*)', and the color '(.*)'")]
         public void TheUserSetsTheTaskWithTheTitleTheContentAndTheColor(string title, string content, string color)
         {
