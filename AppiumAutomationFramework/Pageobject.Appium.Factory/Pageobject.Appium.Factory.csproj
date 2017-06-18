@@ -65,6 +65,7 @@
     <Compile Include="Pages.Appium\AndroidAddTaskPage.cs" />
     <Compile Include="Pages.Appium\AndroidEditTaskPage.cs" />
     <Compile Include="Pages.Appium\AndroidMainViewPage.cs" />
+    <Compile Include="Pages.Appium\AndroidNewGroupPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

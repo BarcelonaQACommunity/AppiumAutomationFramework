@@ -34,6 +34,12 @@ namespace Pageobject.Appium.Factory.Pages.Appium
         [FindsBy(How = How.Id, Using = "douzifly.list:id/content")]
         private IList<IWebElement> _taskList;
 
+        /// <summary>
+        /// Button to go to the group list.
+        /// </summary>
+        [FindsBy(How = How.Id, Using = "douzifly.list:id/txt_title")]
+        private IWebElement _groupButton;
+
         #endregion
 
         /// <summary>
@@ -88,6 +94,14 @@ namespace Pageobject.Appium.Factory.Pages.Appium
         {
             var number = id - 1;
             this._taskList[number].Click();
+        }
+
+        /// <summary>
+        /// Goes to the group list.
+        /// </summary>
+        public void GoToTheGroupList()
+        {
+            this._groupButton.Click();
         }
 
         /// <summary>

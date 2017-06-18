@@ -58,10 +58,23 @@ namespace UserStories.AcceptanceTest.Steps
             Assert.AreEqual(0, this._mainViewPage.TotalTasks);
         }
 
+        /// <summary>
+        /// User goes to the task edit view.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         [When(@"The user goes to the task '(.*)' edit view")]
         public void TheUserGoesToTheTaskEditView(int id)
         {
             this._mainViewPage.SelectTask(id);
+        }
+
+        /// <summary>
+        /// User goes to the group list.
+        /// </summary>
+        [When(@"The user goes to the group list")]
+        public void TheUserGoesToTheGroupList()
+        {
+            this._mainViewPage.GoToTheGroupList();
         }
 
         /// <summary>

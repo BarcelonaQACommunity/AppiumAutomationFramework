@@ -65,6 +65,7 @@
     <Compile Include="Pages.Contracts\IAddTaskPage.cs" />
     <Compile Include="Pages.Contracts\IEditTaskPage.cs" />
     <Compile Include="Pages.Contracts\IMainViewPage.cs" />
+    <Compile Include="Pages.Contracts\INewGroupPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
