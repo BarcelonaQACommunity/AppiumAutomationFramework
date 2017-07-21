@@ -48,8 +48,8 @@ namespace Factory.SetUp
             // See Appium Capabilities wiki.
             var capabilities = new DesiredCapabilities();
             capabilities.SetCapability("platformName", "Android");
-            capabilities.SetCapability("platformVersion", "7.0");
-            capabilities.SetCapability("fullReset", true);
+            capabilities.SetCapability("platformVersion", "8.0");
+            capabilities.SetCapability("fastReset", true);
             capabilities.SetCapability("app", appFullPath);
 
             // To see the device name with the cmd console check adb devices -l
@@ -81,7 +81,7 @@ namespace Factory.SetUp
             var capabilities = new DesiredCapabilities();
             capabilities.SetCapability("platformName", "Android");
             capabilities.SetCapability("platformVersion", "6.0.1");
-            capabilities.SetCapability("fullReset", "True");
+            capabilities.SetCapability("fastReset", "True");
             capabilities.SetCapability("app", appFullPath);
 
             // To see the device name with the cmd console check adb devices -l
