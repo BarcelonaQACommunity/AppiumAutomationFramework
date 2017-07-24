@@ -48,12 +48,12 @@ namespace Factory.SetUp
             // See Appium Capabilities wiki.
             var capabilities = new DesiredCapabilities();
             capabilities.SetCapability("platformName", "Android");
-            capabilities.SetCapability("platformVersion", "8.0");
+            capabilities.SetCapability("platformVersion", "7");
             capabilities.SetCapability("fastReset", true);
             capabilities.SetCapability("app", appFullPath);
 
             // To see the device name with the cmd console check adb devices -l
-            capabilities.SetCapability("deviceName", "generic_x86");
+            capabilities.SetCapability("deviceName", "vbox86p");
 
             AppiumDriver = new AndroidDriver<AndroidElement>(new Uri("http://127.0.0.1:4723/wd/hub"), capabilities, TimeSpan.FromSeconds(60));
 
